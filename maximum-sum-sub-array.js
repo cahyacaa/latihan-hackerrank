@@ -31,7 +31,7 @@ function maxSumSubArray2(arr,size) {
     let windowSize = 0;
     if(size===1) return Math.max(...arr);
 
-    arr.forEach((e, i) => {
+    arr.forEach((_, i) => {
         if (windowSize >= size) {
             tempSum += arr[i]
             tempSum -= arr[i - size]
