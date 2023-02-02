@@ -18,7 +18,10 @@ var isValid = function (s) {
         }
 
     };
+    if( stackOfCloseParentheses.length >0){
+        return false
+    }
     return true
 };
 
-console.log(isValid("{}]["))
+console.log(isValid("{}(){{}}{[]}{[[][]}"))
