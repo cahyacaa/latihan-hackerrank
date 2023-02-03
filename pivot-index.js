@@ -3,18 +3,28 @@
  * @return {number}
  */
 var pivotIndex = function (nums) {
-    let leftSum = rightSum = 0;
-    nums.forEach(n => rightSum += n);
-
-    for (let i = 0; i < nums.length; i++) {
-        let current = nums[i];
-        rightSum -= current;
-
-        if (leftSum === rightSum) return i;
-
-        leftSum += current;
-    }   
-    return -1;
+    let rightSum = 0
+    let leftSum = 0
+    let pivotI = 0
+    let count = 0
+    if (nums.length === 1) {
+        pivotI = 0
+        return pivotI
+    }
+    nums.forEach((_, i) => {
+        leftSum = sumWithInitial(nums.slice(0, i))
+        rightSum = sumWithInitial(nums.slice(-(nums.length - i) + 1))
+        if (i === nums.length - 1) {
+            rightSum = 0
+        }
+        if (leftSum === rightSum) {
+            count++
+            if (count < 2) {
+                pivotI = i
+            }
+        }
+    })
+    return count == 0 ? -1 : pivotI
 
 };
 
@@ -25,4 +35,4 @@ const sumWithInitial = (number) => {
     );
 
 }
-console.log(pivotIndex([1,-1,4]))
+console.log(pivotIndex([0, 0, 0, 0]))
