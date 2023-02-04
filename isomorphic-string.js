@@ -38,4 +38,4 @@ var isIsomorphic = function (s, t) {
 };
 
 
-console.log(isIsomorphic("paper", "title"))
+console.log(isIsomorphic("paper", "titlA"))
